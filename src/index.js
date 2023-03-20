@@ -8,10 +8,10 @@ const port = 3000;
 const expressHbs = require('express-handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'));
-console.log("path: ", path.join(__dirname, 'public'));
+console.log("path: -------------", path.join(__dirname, 'resources/views/layouts/'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine("hbs", expressHbs.engine({ extname: "hbs", defaultLayout: false, layoutsDir: "views/layouts/", }));
+app.engine("hbs", expressHbs.engine({ extname: "hbs", defaultLayout: 'main', layoutsDir: path.join(__dirname, 'resources/views/layouts'), }));
 
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, '/resources/views'));
